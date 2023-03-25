@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bengali Handwriting Recognition</title>
+</head>
+<body>
+    <h1>Bengali Handwriting Recognition</h1>
+    <form action="" method="post" enctype="multipart/form-data">
+        {{ form.csrf_token }}
+        <p>
+            {{ form.image.label }}<br>
+            {{ form.image }}
+        </p>
+        <p>{{ form.submit() }}</p>
+    </form>
+
+    {% if uploaded_image %}
+        <h2>Uploaded Image:</h2>
+        <img src="{{ uploaded_image }}" alt="Uploaded image" style="max-width: 100%;">
+    {% endif %}
+
+    {% if recognized_text %}
+        <h2>Recognized Text:</h2>
+        <pre>{{ recognized_text }}</pre>
+    {% endif %}
+</body>
+</html>
